@@ -2,7 +2,7 @@
 
 [React官网传送门](https://facebook.github.io/react/index.html "React官网")
 # 应用开发分类介绍
-## 原生应用:
+>## 原生应用:
 >介绍：
 特别为某个操作系统做的应用, 比如iOS, Android, Blackberry等等。
 iOS的开发语言:OC(Objective-C), Swift。Android的开发语言: Java 
@@ -42,11 +42,11 @@ c.原生的应用中某些界面使用前端来开发
   原生技术 : 前端技术 = 5 : 5
 # 引用React库
 ## 部署开发环境
-在github上，选择一个版本下载，不要下载最新的，选择一个比较稳定的下载。[传送门](https://github.com/facebook/react/releases"下载地址")
+在github上，选择一个版本下载，不要下载最新的，选择一个比较稳定的下载。[传送门](https://github.com/facebook/react/releases"下载地址")<br>
 下载后，在本地解压，有build文件夹和examples文件夹，还有readme.md文件。
 >进入build文件夹，选择react-min.js文件和react-dom.min.js文件，复制一份放到你的demo中的js文件中。但是这并不是最终的，下面会说
 ## 部署后的文件内容
-```
+<pre><code>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +66,7 @@ c.原生的应用中某些界面使用前端来开发
 </script>
 </body>
 </html>
-```
+</code></pre>
 在我们的代码区域使用JavaScript代码进行开发
 ```
 <script>
