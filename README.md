@@ -46,7 +46,7 @@ c.原生的应用中某些界面使用前端来开发
 下载后，在本地解压，有build文件夹和examples文件夹，还有readme.md文件。
 >进入build文件夹，选择react-min.js文件和react-dom.min.js文件，复制一份放到你的demo中的js文件中。但是这并不是最终的，下面会说
 ## 部署后的文件内容
-<code>
+```
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,8 +66,7 @@ c.原生的应用中某些界面使用前端来开发
 </script>
 </body>
 </html>
-</code>
-在我们的代码区域使用JavaScript代码进行开发
+```
 ```
 <script>
 //这里是我们的代码区域
