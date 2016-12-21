@@ -54,9 +54,7 @@ c.原生的应用中某些界面使用前端来开发
     <title>templet</title>
 </head>
 <body>
-
 <div id="example"></div>
-
 <!--react.min.js: react的核心模块-->
 <script type="text/javascript" src="js/react.min.js"></script>
 <!--react-dom.min.js: react中dom元素操作的模块-->
@@ -67,6 +65,7 @@ c.原生的应用中某些界面使用前端来开发
 </body>
 </html>
 ```
+##看一个demo
 ```
 <script>
 //这里是我们的代码区域
@@ -85,8 +84,7 @@ ReactDOM.render(
 ```
 执行后页面会显示“Hello World！”
 >React.createElement();是可以进行嵌套的
-```
-<script type="text/javascript">
+```<script type="text/javascript">
 //这里是我们的代码区域
 ReactDOM.render(
             React.createElement('div', null,
