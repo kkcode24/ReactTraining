@@ -337,7 +337,6 @@ var pStyle = {
 	    backgroundColor: "green",
 	    fontSize: 20
 };
-
 var Message = React.createClass({
    render: function () {
        return (
@@ -353,29 +352,24 @@ var Message = React.createClass({
        )
    }
 });
-
 ReactDOM.render(
-      <Message title="干了这碗鸡汤"
-               content="如果你得罪了老板，失去的只是一份工作；如果你得罪了客户，失去的不过是一份订单；是的，世上只有一个人可以得罪：你给她脸色看，你冲她发牢骚，你大声顶撞她，甚至当 着她的面摔碗，她都不会记恨你，原因很简单，因为她是你的母亲。"></Message>,
+      <Message title="干了这碗鸡汤"             content="如果你得罪了老板，失去的只是一份工作；如果你得罪了客户，失去的不过是一份订单；是的，世上只有一个人可以得罪：你给她脸色看，你冲她发牢骚，你大声顶撞她，甚至当 着她的面摔碗，她都不会记恨你，原因很简单，因为她是你的母亲。"></Message>,
       document.getElementById('example')
 );
 ```
 ## 多个组件组合成一个组件
 >直接上例子
-
 ```
 var ListTitle = React.createClass({
     render: function () {
         return <h1>{this.props.title}</h1>
     }
 });
-
 var ListContent = React.createClass({
  render: function () {
      return <p>{this.props.content}</p>
  }
 });
-
 var List = React.createClass({
  render: function () {
      return (
@@ -386,7 +380,6 @@ var List = React.createClass({
      )
  }
 });
-
 ReactDOM.render(
      <List t="我真帅!" c="这是一个真理!"/>,
      document.getElementById('example')
@@ -395,14 +388,12 @@ ReactDOM.render(
 # 谈谈props对象
 >props: 组件自带的的属性, 用于组件内外的值的传递
 >注: props是只读的, 只能获取, 不能修改
-
 ```
 var Hello = React.createClass({
 	render: function () {
 	    return <h1>Hello, {this.props.name1}, {this.props.name2}</h1>
 	}
 });
-
 ReactDOM.render(
     <Hello name1="小明" name2="小龙"/>,
     document.getElementById('example')
