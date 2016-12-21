@@ -78,13 +78,13 @@ ReactDOM.render(
 	有两个参数:
 	parameter1:虚拟DOM
 	parameter2:真实DOM
-	
 */
 </script>
 ```
 执行后页面会显示“Hello World！”
 >React.createElement();是可以进行嵌套的
-```<script type="text/javascript">
+```
+<script type="text/javascript">
 //这里是我们的代码区域
 ReactDOM.render(
             React.createElement('div', null,
@@ -128,11 +128,6 @@ ReactDOM.render(
 ## 最终部署环境
 ```
 //因此最终模板为
-<!--
-React.js
-官网: https://facebook.github.io/react/index.html
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,9 +135,7 @@ React.js
     <title>Title</title>
 </head>
 <body>
-
 <div id="example"></div>
-
 <script type="text/javascript" src="js/react.min.js"></script>
 <script type="text/javascript" src="js/react-dom.min.js"></script>
 <script type="text/javascript" src="js/browser.min.js"></script>
@@ -155,9 +148,8 @@ type="text/babel": script内部的代码, 最终用babel的编译器进行编译
 </html>
 ```
 ## 吃块糖
-
 ```
-<!--使用JSX书写-->
+//使用JSX书写
 <script type="text/babel">
     ReactDOM.render(
             <h1>Hello, React!</h1>,
@@ -165,7 +157,6 @@ type="text/babel": script内部的代码, 最终用babel的编译器进行编译
     );
 </script>
 ```
-
 ```
 //也可以嵌套
 <script type="text/babel">
