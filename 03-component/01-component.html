@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>createClass</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    //React是基于组件进行开发
+
+    //创建一个组件(类), 显示Hello world!
+    //1.组件名字, 以大写字母开头
+    //2.使用createClass创建组件
+    //3.组件必须实现render方法
+
+
+    //创建组件
+    var HelloWorld = React.createClass({
+        //定义render方法, 当组件渲染时触发
+        render: function () {
+            return <h1>Hello world!</h1>
+        }
+    });
+
+    //使用组件
+    //方式1: 双标签
+    ReactDOM.render(
+            <HelloWorld></HelloWorld>,
+            document.getElementById('example')
+    );
+
+    //方式2: 单标签
+    ReactDOM.render(
+            <HelloWorld />,
+            document.getElementById('example')
+    );
+</script>
+</body>
+</html>

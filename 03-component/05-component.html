@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>componentCompact</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    //多个组件组合成一个组件
+    var ListTitle = React.createClass({
+        render: function () {
+            return <h1>{this.props.title}</h1>
+        }
+    });
+
+    var ListContent = React.createClass({
+        render: function () {
+            return <p>{this.props.content}</p>
+        }
+    });
+
+    var List = React.createClass({
+        render: function () {
+            return (
+                    <div>
+                        <ListTitle title={this.props.t}/>
+                        <ListContent content={this.props.c}/>
+                    </div>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <List t="我真帅!" c="这是一个真理!"/>,
+            document.getElementById('example')
+    );
+
+
+</script>
+</body>
+</html>

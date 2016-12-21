@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    //在JSX中, 出现{}, 认为是变量
+    var text = '学姐';
+    ReactDOM.render(
+            <h1>哈喽, {text}!</h1>,
+            document.getElementById('example')
+    );
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    //练习: 定义组件Link, 用于展示一个超链接, 例如<a href="http://www.baidu.com">百度</a>, 其中链接地址和链接标题可以进行设置
+
+    var Link = React.createClass({
+        render: function () {
+            return <a href={this.props.url}>{this.props.title}</a>
+        }
+    });
+
+    ReactDOM.render(
+        <Link url="http://baidu.com" title="百度"/>,
+        document.getElementById('example')
+    );
+</script>
+</body>
+</html>

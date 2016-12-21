@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    //注: JSX中的{}中, 可以写表达式(变量,运算,函数调用)
+    ReactDOM.render(
+        <div>1 + 1 = {1 + 1}</div>,
+        document.getElementById('example')
+    );
+</script>
+</body>
+</html>

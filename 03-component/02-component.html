@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props对象</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    //给组件赋属性值, 都会被记录在this.props的对象中, 
+    //对象的属性和组件的属性一一对应
+    var HelloWho = React.createClass({
+        render: function () {
+            return <h1>Hello {this.props.name}!</h1>
+        }
+    });
+
+    ReactDOM.render(
+            <HelloWho name="帅哥"></HelloWho>,
+            document.getElementById('example')
+    );
+    /*练习: 
+    定义组件Link, 用于展示一个超链接, 
+    例如<a href="http://www.baidu.com">百度</a>, 其中链接地址和链接标题可以进行设置
+    答案见03-component.html
+    */
+</script>
+</body>
+</html>

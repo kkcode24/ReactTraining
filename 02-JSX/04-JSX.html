@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    var arr = ['宝宝', '蓉蓉', '经纪人', '楼上邻居', '隔壁老王'];
+
+    ReactDOM.render(
+        <ul>
+            <li>{arr[0]}</li>
+            <li>{arr[1]}</li>
+            <li>{arr[2]}</li>
+            <li>{arr[3]}</li>
+        </ul>,
+        document.getElementById('example')
+    );
+
+    //循环操作
+    ReactDOM.render(
+        <ul>
+            {
+                arr.map(function (e) {
+                    return <li>Hi, {e}!</li>
+                })
+            }
+        </ul>,
+        document.getElementById('example')
+    );
+</script>
+</body>
+</html>

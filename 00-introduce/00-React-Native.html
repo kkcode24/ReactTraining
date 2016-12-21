@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+混合式应用开发
+
+MVC
+
+React.js: facebook的前端技术, 用于dom元素的操作, 属于view层框架, 组件化开发, 可以复用, 把dom操作抽离出来, 虚拟dom
+
+React Native: 把React技术应用到移动应用的开发
+
+
+应用(从实现的技术角度), 分为:
+1.原生应用
+原生应用, 特别为某个操作系统做的应用, 比如iOS, Android, Blackberry等等
+iOS的开发语言: OC(Objective-C), Swift
+Android的开发语言: Java
+
+优点:
+a.访问手机的所有功能
+b.速度比较快, 用户体验好
+c.可以投放到应用市场(app stroe, 豌豆荚), 并进行内购, 收费下载
+d.方便查找
+
+缺点:
+a.开发成本高
+b.上传时间难易把控
+c.内容限制
+d.新版本需要重新下载
+
+2.web应用
+web应用是为移动浏览器设计的应用, 使用普通web技术(html, css, JavaScript)实现
+
+优点:
+a.跨平台(各种智能终端的浏览器上运行)
+b.开发成本低
+c.可以立即上线
+d.内容没有限制
+e.用户更新比较快(只需要刷新浏览器)
+
+缺点:
+a.加载速度慢
+b.不能上传应用商店
+c.必须联网
+d.可以看到源码
+
+3.混合应用
+混合应用, 使用原生的技术(OC, Java)和web技术(html, css, js)来开发应用
+a.原生应用的开发者做一个应用皮(应用内部只有一个控件webview, 浏览器组件), 前端人员开发移动页面, 并在原生应用中的webview中显示
+  原生技术 : 前端技术 = 1 : 9
+b.通过js代码, 写一个应用, 最终编译成iOS和Android版本
+  原生技术 : 前端技术 = 0 : 10
+c.原生的应用中某些界面使用前端来开发
+  原生技术 : 前端技术 = 5 : 5
+</body>
+</html>

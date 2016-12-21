@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .bg{
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    //1.在渲染的元素内容中, 不能出现for, class, 因为和React中的关键词重名
+    //for 写成 htmlFor
+    //class 写成 className
+    //2.渲染的元素内容, 只能有一个根节点
+    //3.单标签需要用/闭合
+    ReactDOM.render(
+        <div className = "bg">
+            <label htmlFor="username">用户名:</label>
+            <input type="text" id="username"/>
+        </div>,
+        document.getElementById('example')
+    );
+</script>
+</body>
+</html>

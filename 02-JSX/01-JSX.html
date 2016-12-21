@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    //在JSX中, 出现<>, 会自动创建元素
+    ReactDOM.render(
+        <h1>Hello React!</h1>,
+        document.getElementById('example')
+    );
+</script>
+</body>
+</html>

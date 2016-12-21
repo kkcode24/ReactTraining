@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .title {
+            text-align: center;
+            color: #cc52ff;
+        }
+    </style>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    //React是基于组件进行开发
+
+    //创建一个组件(类), 显示Hello world!
+    //1.组件名字, 以大写字母开头
+    //2.使用createClass创建组件
+    //3.组件必须实现render方法
+    var HelloWorld = React.createClass({
+        //定义render方法, 当组件渲染时触发
+        render: function () {
+            return <h1>Hello world!</h1>
+        }
+    });
+
+    //使用组件
+    //方式1: 双标签
+    ReactDOM.render(
+            <HelloWorld></HelloWorld>,
+            document.getElementById('example')
+    );
+
+    //方式2: 单标签
+    ReactDOM.render(
+            <HelloWorld />,
+            document.getElementById('example')
+    );
+
+    //给组件赋属性值, 都会被记录在this.props的对象中, 对象的属性和组件的属性一一对应
+    var HelloWho = React.createClass({
+        render: function () {
+            return <h1>Hello {this.props.name}!</h1>
+        }
+    });
+
+    ReactDOM.render(
+            <HelloWho name="帅哥"></HelloWho>,
+            document.getElementById('example')
+    );
+
+    //练习: 定义组件Link, 用于展示一个超链接, 例如<a href="http://www.baidu.com">百度</a>, 其中链接地址和链接标题可以进行设置
+
+    var Link = React.createClass({
+        render: function () {
+            return <a href={this.props.url}>{this.props.title}</a>
+        }
+    });
+
+    ReactDOM.render(
+            <Link url="http://baidu.com" title="百度"/>,
+            document.getElementById('example')
+    );
+
+    //为组件添加样式
+    //1.内联样式, 比如div
+    //2.选择器样式, 比如h1
+    //3.对象样式, 比如p
+
+    //注: 对象样式或内联样式
+    //1.样式的值为对象
+    //2.对象的属性用驼峰法命名
+    //3.如果值为12px, 可以省略单位px
+
+    var pStyle = {
+        backgroundColor: "green",
+        fontSize: 20
+    };
+
+    var Message = React.createClass({
+        render: function () {
+            return (
+                    <div style={{
+                        backgroundColor: "yellow",
+                        borderWidth: 5,
+                        borderColor: "black",
+                        borderStyle: "solid"
+                    }}>
+                        <h1 className="title">{this.props.title}</h1>
+                        <p style={pStyle}>{this.props.content}</p>
+                    </div>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <Message title="干了这碗鸡汤"
+                     content="如果你得罪了老板，失去的只是一份工作；如果你得罪了客户，失去的不过是一份订单；是的，世上只有一个人可以得罪：你给她脸色看，你冲她发牢骚，你大声顶撞她，甚至当 着她的面摔碗，她都不会记恨你，原因很简单，因为她是你的母亲。"></Message>,
+            document.getElementById('example')
+    );
+
+    //多个组件组合成一个组件
+    var ListTitle = React.createClass({
+        render: function () {
+            return <h1>{this.props.title}</h1>
+        }
+    });
+
+    var ListContent = React.createClass({
+        render: function () {
+            return <p>{this.props.content}</p>
+        }
+    });
+
+    var List = React.createClass({
+        render: function () {
+            return (
+                    <div>
+                        <ListTitle title={this.props.t}/>
+                        <ListContent content={this.props.c}/>
+                    </div>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <List t="我真帅!" c="这是一个真理!"/>,
+            document.getElementById('example')
+    );
+
+
+</script>
+</body>
+</html>

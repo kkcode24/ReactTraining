@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>componentStyle</title>
+    <style>
+        .title {
+            text-align: center;
+            color: #cc52ff;
+        }
+    </style>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    //为组件添加样式
+    //1.内联样式, 比如div
+    //2.选择器样式, 比如h1
+    //3.对象样式, 比如p
+
+    //注: 对象样式或内联样式
+    //1.样式的值为对象
+    //2.对象的属性用驼峰法命名
+    //3.如果值为12px, 可以省略单位px
+
+    var pStyle = {
+        backgroundColor: "green",
+        fontSize: 20
+    };
+
+    var Message = React.createClass({
+        render: function () {
+            return (
+                    <div style={{
+                        backgroundColor: "yellow",
+                        borderWidth: 3,
+                        borderColor: "black",
+                        borderStyle: "solid"
+                    }}>
+                        <h1 className="title">{this.props.title}</h1>
+                        <p style={pStyle}>{this.props.content}</p>
+                    </div>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <Message title="干了这碗鸡汤"
+                     content="如果你得罪了老板，失去的只是一份工作；如果你得罪了客户，失去的不过是一份订单；是的，世上只有一个人可以得罪：你给她脸色看，你冲她发牢骚，你大声顶撞她，甚至当 着她的面摔碗，她都不会记恨你，原因很简单，因为她是你的母亲。"></Message>,
+            document.getElementById('example')
+    );
+</script>
+</body>
+</html>
