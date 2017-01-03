@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+
+    //练习: 实时显示输入内容
+    
+    var Input = React.createClass({
+        getInitialState: function () {
+            return {
+                content: ''
+            }
+        },
+        change: function (event) {
+            //event: 触发的事件
+            console.log(event.target.value);
+            this.setState({
+                content: event.target.value
+            });
+        },
+        render: function () {
+            return (
+                    <div>
+                        <input type="text" onChange={this.change}/>
+                        <p>{this.state.content}</p>
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+        <Input/>,
+        document.getElementById('container')
+    );
+</script>
+</body>
+</html>

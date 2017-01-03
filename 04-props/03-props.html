@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props对象</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+   var Link = React.createClass({
+        render: function () {
+            return <a {...this.props}>{this.props.name}</a>
+        }
+    });
+    /*
+     this.props = {
+     href: "http://www.baidu.com",
+     name: "百度"
+     };
+     */
+    ReactDOM.render(
+        <Link href="http://www.baidu.com" name="百度"/>,
+        document.getElementById('example')
+    );
+</script>
+</body>
+</html>

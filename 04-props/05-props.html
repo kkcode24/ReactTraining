@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props对象</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+
+    //this.props.children: 代表元素内的子元素
+    
+    var ListPro = React.createClass({
+        render: function () {
+            return (
+                    <ul>
+                        {
+                            this.props.children.map(function (e) {
+                                return <li>{e}</li>;
+                            })
+                        }
+                    </ul>
+            );
+        }
+    });
+
+    ReactDOM.render(
+        <ListPro a="1" b={2}>
+            <em>斜体</em>
+            <strong>粗体</strong>
+            <a href="#">链接</a>
+        </ListPro>,
+        document.getElementById('example')
+    );
+</script>
+</body>
+</html>

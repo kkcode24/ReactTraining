@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props对象</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    //props: 组件自带的的属性, 用于组件内外的值的传递
+    //注: props是只读的, 只能获取, 不能修改
+    var Hello = React.createClass({
+        render: function () {
+            return <h1>Hello, {this.props.name1}, {this.props.name2}</h1>
+        }
+    });
+
+    ReactDOM.render(
+        <Hello name1="小明" name2="小龙"/>,
+        document.getElementById('example')
+    );
+    var values = {
+        name1: '小李',
+        name2: '小丽'
+    };
+
+    ReactDOM.render(
+        <Hello name1={values.name1} name2={values.name2}/>,
+        document.getElementById('example')
+    );
+</script>
+</body>
+</html>

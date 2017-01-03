@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props对象</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+   
+    //props指定默认值
+    var data = 123;
+
+    var ShowTitle = React.createClass({
+        //指定默认值
+        getDefaultProps: function () {
+            //props是一个对象
+            return {
+                title: '默认标题'
+            }
+        },
+        render: function () {
+            return <h1>{this.props.title}</h1>
+        }
+    });
+    ReactDOM.render(
+            <ShowTitle title={data}/>,
+            document.getElementById('example')
+    );
+</script>
+</body>
+</html>

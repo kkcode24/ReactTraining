@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script src="../js/jquery3.1.0.min.js"></script>
+
+<script type="text/babel">
+    var List = React.createClass({
+        getInitialState: function () {
+            return {
+                arr: []
+            }
+        },
+        render: function () {
+            return (
+                    <ul>
+                        {
+                            this.state.arr.map(function (e) {
+                                return <li>{e}</li>
+                            })
+                        }
+                    </ul>
+            );
+        },
+        componentDidMount: function () {
+            console.log("已经挂载组件");
+            $.ajax({
+                url: this.props.url,
+                dataType: 'jsonp',
+                type: "GET",
+                jsonp: "cb",//jsonp回调的函数名的key值, 会自动将cb=success, 会调用success方法
+                success: function (data) {
+                    this.setState({
+                        arr: data.s
+                    });
+                }.bind(this)
+                //在函数的后面添加bind, 用于修改函数内部this的指向
+            });
+        }
+    });
+
+
+    ReactDOM.render(
+            <List url="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=大宝剑"/>,
+            document.getElementById('container')
+    );
+
+    console.dir(List);
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>state</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    //事件处理
+    var MyButton = React.createClass({
+        //事件触发的函数
+        click: function () {
+            alert(this.props.title);
+        },
+        render: function () {
+            return <button onClick={this.click}>{this.props.title}</button>
+        }
+    });
+
+    ReactDOM.render(
+            <MyButton title="我是按钮的标题"></MyButton>,
+            document.getElementById('example')
+    );
+</script>
+</body>
+</html>

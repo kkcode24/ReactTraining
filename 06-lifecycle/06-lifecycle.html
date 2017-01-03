@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    //组件的生命周期: 从创建组件到组件移除的完整的过程
+
+    //React组件的生命周期,分为三个阶段
+    //1.挂载阶段(Mounting): 把组件插入元素中
+    //2.更新阶段(Update): 重新渲染组件
+    //3.移除阶段(Unmounting): 从元素中移除组件
+
+    var Demo = React.createClass({
+        getDefaultProps: function () {
+            console.log("获取默认属性值");
+            return {
+                name: 'world'
+            }
+        },
+        getInitialState: function () {
+            console.log("初始化状态值");
+            return {
+                isSelect: false
+            }
+        },
+        componentWillMount: function () {
+            console.log("将要挂载组件");
+        },
+        render: function () {
+            console.log("渲染组件");
+            return <h1>Hello, {this.props.name}!</h1>
+        },
+        componentDidMount: function () {
+            console.log("已经挂载组件");
+        },
+        componentWillReceiveProps: function () {
+            console.log("将要接收到属性值");
+        },
+        shouldComponentUpdate: function () {
+            console.log("是否可以更新组件");
+            return true;
+        },
+        componentWillUpdate: function () {
+            console.log("将要更新组件");
+        },
+        componentDidUpdate: function () {
+            console.log("已经更新组件");
+        },
+        componentWillUnmount: function () {
+            console.log("将要移除组件");
+        }
+    });
+
+    //第一个渲染组件
+    ReactDOM.render(
+        <Demo name="三儿"/>,
+        document.getElementById('example')
+    );
+
+    //重新渲染组件
+    ReactDOM.render(
+        <Demo name="四儿"/>,
+        document.getElementById('example')
+    );
+
+    //移除组件
+    //ReactDOM.unmountComponentAtNode(
+       // document.getElementById('example')
+    //);
+</script>
+</body>
+</html>

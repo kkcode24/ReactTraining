@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props对象</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    var Hello = React.createClass({
+        render: function () {
+            return <h1>Hello, {this.props.name1}, {this.props.name2}</h1>
+        }
+    });
+
+    var values = {
+        name1: '小牛',
+        name2: '小狗'
+    };
+
+    //...是一种语法糖, 延展操作符, 把对象的属性值赋到对应的组件中
+    ReactDOM.render(
+            <Hello {...values}/>,
+            document.getElementById('example')
+    );
+</script>
+</body>
+</html>
