@@ -399,3 +399,468 @@ ReactDOM.render(
     document.getElementById('example')
 );
 ```
+# props对象
+## props是只读的
+>props: 组件自带的的属性, 用于组件内外的值的传递
+   注: props是只读的, 只能获取, 不能修改 
+
+```
+<script type="text/babel">
+    var Hello = React.createClass({
+        render: function () {
+            return <h1>Hello, {this.props.name1}, {this.props.name2}</h1>
+        }
+    });
+
+    ReactDOM.render(
+        <Hello name1="小明" name2="小龙"/>,
+        document.getElementById('example')
+    );
+    var values = {
+        name1: '小李',
+        name2: '小丽'
+    };
+
+    ReactDOM.render(
+        <Hello name1={values.name1} name2={values.name2}/>,
+        document.getElementById('example')
+    );
+</script>
+```
+## 延展操作符
+>...(三个点, 延展操作符)是一种语法糖， 把对象的属性值赋到对应的组件中
+
+```
+<script type="text/babel">
+    var Hello = React.createClass({
+        render: function () {
+            return <h1>Hello, {this.props.name1}, {this.props.name2}</h1>
+        }
+    });
+
+    var values = {
+        name1: '小牛',
+        name2: '小狗'
+    };
+    
+    ReactDOM.render(
+            <Hello {...values}/>,
+            document.getElementById('example')
+    );
+</script>
+
+```
+## 延展操作符练习
+
+```
+<script type="text/babel">
+   var Link = React.createClass({
+        render: function () {
+            return <a {...this.props}>{this.props.name}</a>
+        }
+    });
+    
+    ReactDOM.render(
+        <Link href="http://www.baidu.com" name="百度"/>,
+        document.getElementById('example')
+    );
+
+    /*
+     this.props = {
+     href: "http://www.baidu.com",
+     name: "百度"
+     };
+     */
+</script>
+```
+## this.props.children
+>this.props.children: 代表元素内的子元素
+
+```
+<script type="text/babel">
+
+    //抛砖引玉demo
+
+    var List = React.createClass({
+        render: function () {
+            return (
+                    <ul>
+                        {
+                            this.props.data.map(function (e) {
+                                return <li>{e}</li>
+                            })
+                        }
+                    </ul>
+            );
+        }
+    });
+
+    ReactDOM.render(
+            <List data={[1, 2, 3]}></List>,
+            document.getElementById('example')
+    );
+    
+    //请结合05-props.html再看
+</script>
+```
+>05-props.html
+```
+<script type="text/babel">
+
+    //this.props.children: 代表元素内的子元素
+    
+    var ListPro = React.createClass({
+        render: function () {
+            return (
+                    <ul>
+                        {
+                            this.props.children.map(function (e) {
+                                return <li>{e}</li>;
+                            })
+                        }
+                    </ul>
+            );
+        }
+    });
+
+    ReactDOM.render(
+        <ListPro a="1" b={2}>
+            <em>斜体</em>
+            <strong>粗体</strong>
+            <a href="# ">链接</a>
+        </ListPro>,
+        document.getElementById('example')
+    );
+</script>
+```
+## props指定默认值
+
+```
+<script type="text/babel">
+   
+    var data = 123;
+
+    var ShowTitle = React.createClass({
+        //指定默认值
+        getDefaultProps: function () {
+            //props是一个对象
+            return {
+                title: '默认标题'
+            }
+        },
+        render: function () {
+            return <h1>{this.props.title}</h1>
+        }
+    });
+    ReactDOM.render(
+            <ShowTitle title={data}/>,
+            document.getElementById('example')
+    );
+</script>
+```
+# state状态
+>在此之前，先说下事件机制
+
+```
+<script type="text/babel">
+    //事件处理
+    var MyButton = React.createClass({
+        //事件触发的函数
+        click: function () {
+            alert(this.props.title);
+        },
+        render: function () {
+            return <button onClick={this.click}>{this.props.title}</button>
+        }
+    });
+
+    ReactDOM.render(
+            <MyButton title="我是按钮的标题"></MyButton>,
+            document.getElementById('example')
+    );
+</script>
+```
+
+>state和props的区别: 
+>props用于记录组件的属性和子元素, 是一个只读的对象; state用于进行状态的记录,是一个可以修改的对象
+
+>练习: 定义一个组件CheckBox, 包含两部分复选框, 文本; 效果: 选择复选框, 文本变为true, 取消选择, 文本变成false
+
+请结合02-state.html看
+
+```
+<script type="text/babel">
+
+    var CheckBox = React.createClass({
+        //获取初始的状态值state
+        getInitialState: function () {
+            return {
+                isCheck: false
+            }
+        },
+        click: function () {
+            //不能用等号"="直接修改state
+            //使用setState的方法来修改state
+            this.setState({
+                isCheck: !this.state.isCheck
+            });
+        },
+        render: function () {
+            return (
+                    <div>
+                        <input type="checkbox" onClick={this.click}/>
+                        <span>{this.state.isCheck ? 'true' : 'false'}</span>
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+            <CheckBox/>,
+            document.getElementById('example')
+    );
+</script>
+```
+>练习: 实时显示输入内容
+>请结合03-state.html看
+
+```
+<script type="text/babel">
+    
+    var Input = React.createClass({
+        getInitialState: function () {
+            return {
+                content: ''
+            }
+        },
+        change: function (event) {
+            //event: 触发的事件
+            console.log(event.target.value);
+            this.setState({
+                content: event.target.value
+            });
+        },
+        render: function () {
+            return (
+                    <div>
+                        <input type="text" onChange={this.change}/>
+                        <p>{this.state.content}</p>
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+        <Input/>,
+        document.getElementById('container')
+    );
+</script>
+```
+# 组件的生命周期
+>组件的生命周期: 从创建组件到组件移除的完整的过程
+React组件的生命周期,分为三个阶段:
+      1.挂载阶段(Mounting): 把组件插入元素中
+      2.更新阶段(Update): 重新渲染组件
+      3.移除阶段(Unmounting): 从元素中移除组件
+## 挂载阶段
+```
+<script type="text/babel">
+    var Demo = React.createClass({
+        getDefaultProps: function () {
+            console.log("获取默认属性值");
+            return {
+                name: 'world'
+            }
+        },
+        getInitialState: function () {
+            console.log("初始化状态值");
+            return {
+                isSelect: false
+            }
+        },
+        componentWillMount: function () {
+            console.log("将要挂载组件");
+        },
+        render: function () {
+            console.log("渲染组件");
+            return <h1>Hello, {this.props.name}!</h1>
+        }
+    });
+
+    //第一个渲染组件
+    ReactDOM.render(
+        <Demo name="三儿"/>,
+        document.getElementById('example')
+    );
+</script>
+```
+## 更新阶段
+
+```
+<script type="text/babel">
+
+    var Demo = React.createClass({
+        getDefaultProps: function () {
+            console.log("获取默认属性值");
+            return {
+                name: 'world'
+            }
+        },
+        getInitialState: function () {
+            console.log("初始化状态值");
+            return {
+                isSelect: false
+            }
+        },
+        componentWillMount: function () {
+            console.log("将要挂载组件");
+        },
+        render: function () {
+            console.log("渲染组件");
+            return <h1>Hello, {this.props.name}!</h1>
+        },
+        componentDidMount: function () {
+            console.log("已经挂载组件");
+        },
+        componentWillReceiveProps: function () {
+            console.log("将要接收到属性值");
+        },
+        shouldComponentUpdate: function () {
+            console.log("是否可以更新组件");
+            return true;
+        },
+        componentWillUpdate: function () {
+            console.log("将要更新组件");
+        },
+        //render:  渲染组件
+        componentDidUpdate: function () {
+            console.log("已经更新组件");
+        }
+    });
+
+    //第一个渲染组件
+    ReactDOM.render(
+        <Demo name="三儿"/>,
+        document.getElementById('example')
+    );
+
+    //重新渲染组件
+    ReactDOM.render(
+        <Demo name="四儿"/>,
+        document.getElementById('example')
+    );
+
+</script>
+```
+## 移除组件
+
+```
+<script type="text/babel">
+
+    var Demo = React.createClass({
+        getDefaultProps: function () {
+            console.log("获取默认属性值");
+            return {
+                name: 'world'
+            }
+        },
+        getInitialState: function () {
+            console.log("初始化状态值");
+            return {
+                isSelect: false
+            }
+        },
+        componentWillMount: function () {
+            console.log("将要挂载组件");
+        },
+        render: function () {
+            console.log("渲染组件");
+            return <h1>Hello, {this.props.name}!</h1>
+        },
+        componentDidMount: function () {
+            console.log("已经挂载组件");
+        },
+        componentWillReceiveProps: function () {
+            console.log("将要接收到属性值");
+        },
+        shouldComponentUpdate: function () {
+            console.log("是否可以更新组件");
+            return true;
+        },
+        componentWillUpdate: function () {
+            console.log("将要更新组件");
+        },
+        componentDidUpdate: function () {
+            console.log("已经更新组件");
+        },
+        componentWillUnmount: function () {
+            console.log("将要移除组件");
+        }
+    });
+
+    //第一个渲染组件
+    ReactDOM.render(
+        <Demo name="三儿"/>,
+        document.getElementById('example')
+    );
+
+    //重新渲染组件
+    ReactDOM.render(
+        <Demo name="四儿"/>,
+        document.getElementById('example')
+    );
+
+    //移除组件
+    ReactDOM.unmountComponentAtNode(
+        document.getElementById('example')
+    );
+</script>
+```
+>06-lifecycle.html 是完成的测试，包含注释及代码
+# React之Ajax
+
+```
+<script type="text/babel">
+    var List = React.createClass({
+        getInitialState: function () {
+            return {
+                arr: []
+            }
+        },
+        render: function () {
+            return (
+                    <ul>
+                        {
+                            this.state.arr.map(function (e) {
+                                return <li>{e}</li>
+                            })
+                        }
+                    </ul>
+            );
+        },
+        componentDidMount: function () {
+            console.log("已经挂载组件");
+            $.ajax({
+                url: this.props.url,
+                dataType: 'jsonp',
+                type: "GET",
+                jsonp: "cb",//jsonp回调的函数名的key值, 会自动将cb=success, 会调用success方法
+                success: function (data) {
+                    this.setState({
+                        arr: data.s
+                    });
+                }.bind(this)
+                //在函数的后面添加bind, 用于修改函数内部this的指向
+            });
+        }
+    });
+
+
+    ReactDOM.render(
+            <List url="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=大宝剑"/>,
+            document.getElementById('container')
+    );
+
+</script>
+```
+>入门教程结束了，但是继续学习React的路程才刚刚开始，希望本教程对你有所帮助，有缘人。
