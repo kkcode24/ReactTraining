@@ -503,7 +503,9 @@ ReactDOM.render(
     //请结合05-props.html再看
 </script>
 ```
->05-props.html
+
+05-props.html
+
 ```
 <script type="text/babel">
 
