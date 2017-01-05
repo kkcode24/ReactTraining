@@ -12,12 +12,6 @@
 <script src="../js/react-dom.min.js"></script>
 <script src="../js/browser.min.js"></script>
 <script type="text/babel">
-    //组件的生命周期: 从创建组件到组件移除的完整的过程
-
-    //React组件的生命周期,分为三个阶段
-    //1.挂载阶段(Mounting): 把组件插入元素中
-    //2.更新阶段(Update): 重新渲染组件
-    //3.移除阶段(Unmounting): 从元素中移除组件
 
     var Demo = React.createClass({
         getDefaultProps: function () {
@@ -73,9 +67,9 @@
     );
 
     //移除组件
-    //ReactDOM.unmountComponentAtNode(
-       // document.getElementById('example')
-    //);
+    ReactDOM.unmountComponentAtNode(
+        document.getElementById('example')
+    );
 </script>
 </body>
 </html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件的生命周期</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script src="../js/react.min.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    var Demo = React.createClass({
+        getDefaultProps: function () {
+            console.log("获取默认属性值");
+            return {
+                name: 'world'
+            }
+        },
+        getInitialState: function () {
+            console.log("初始化状态值");
+            return {
+                isSelect: false
+            }
+        },
+        componentWillMount: function () {
+            console.log("将要挂载组件");
+        },
+        render: function () {
+            console.log("渲染组件");
+            return <h1>Hello, {this.props.name}!</h1>
+        }
+    });
+
+    //第一个渲染组件
+    ReactDOM.render(
+        <Demo name="三儿"/>,
+        document.getElementById('example')
+    );
+</script>
+</body>
+</html>
