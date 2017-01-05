@@ -688,14 +688,14 @@ React组件的生命周期,分为三个阶段:
             return <h1>Hello, {this.props.name}!</h1>
         }
     });
-
-    //第一个渲染组件
+	//第一个渲染组件
     ReactDOM.render(
         <Demo name="三儿"/>,
         document.getElementById('example')
     );
 </script>
 ```
+
 ## 更新阶段
 
 ```
