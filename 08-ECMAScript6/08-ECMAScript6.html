@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ECMAScript6</title>
+</head>
+<body>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    //变量声明的方式: var, let, const
+
+    //变量的作用域
+    //1.函数作用域, function(){}
+    //2.块级作用域, {}
+
+    //var声明的变量, 具有函数作用域
+    var arr = [1, 2, 3];
+    for (var i = 0; i < arr.length; i++) {
+
+    }
+    console.log(arr[i]);
+
+    //let声明的变量, 具有块级作用域
+    for (let j = 0; j < 10; j++) {
+
+    }
+    //console.log(j);//error
+
+    //为了避免出现变量污染, 解决方案: 立即执行匿名函数(IIFE, immediately-invoked function Expression)
+    var a = 100;
+    window.a = 100;
+    var a = 200;
+    window.a = 200;
+
+    (function () {
+        var a = 100;
+    }());
+
+    {
+        let a = 100;
+    }
+
+    //let声明的变量, 在同一作用域下, 不允许重名
+    let a1 = 100;
+    //let a1 = 100;
+
+    //const声明一个常量
+    //常量用大写字母命名
+    const PI = 3.1415;
+    console.log(PI);
+
+    //常量不允许修改
+    //PI = 3.14;
+
+    //const声明的常量, 必须赋值
+    //const HEIGHT;
+
+    //const声明的常量, 具有块级作用域
+    if (true) {
+        const HEIGHT = 180;
+    }
+    //console.log(HEIGHT);//error
+
+</script>
+
+<script type="text/babel">
+    var a = 1;
+    var b = 2;
+    var c = 3;
+    console.log(a, b, c);
+
+    a = b = c = 10;
+    console.log(a, b, c);
+
+    //模式匹配: 等号左右的模式相同, 左侧的变量会被赋上对应的值
+    var [a1, a2, a3] = [11, 22, 33];
+    console.log(a1, a2, a3);
+
+    var [b1, , b3] = [11, 22, 33];
+    console.log(b1, b3);
+
+    //rest操作: 获取剩余内容
+    var [c1, ...c3] = [11, 22, 33];
+    console.log(c1, c3);
+
+    //指定默认值
+    var [d1, d2 = 22] = [11, 33];
+    console.log(d1, d2);
+
+    //对对象进行解构, 只和对象的属性名有关, 和次序无关
+    var {age, gender1, name} = {name: '张三', gender: '男', age: 18};
+    console.log(name, gender1, age);
+
+    //用途
+    //1.交换变量
+    var num1 = 10;
+    var num2 = 20;
+
+    var temp = num1;
+    num1 = num2;
+    num2 = temp;
+    console.log(num1, num2);
+
+    [num1, num2] = [num2, num1];
+    console.log(num1, num2);
+
+    //2.函数返回多个值
+    function test() {
+        return ["李四", "未知", 20];
+    }
+    var [name, gender, age] = test();
+    console.log(name, gender, age);
+
+    //3.json解析
+    var json = {
+        id: 123,
+        status: "OK",
+        data: [1, 2, 3]
+    };
+
+    var {id, status, data} = json;
+    console.log(id, status, data);
+
+</script>
+
+<script type="text/babel">
+    //字符串
+    var s = "Hello, world!";
+    console.log(s.indexOf("wo"));
+    console.log(s.startsWith("He"));
+    console.log(s.endsWith("d!"));
+    console.log(s.includes("llo"));
+    console.log(s.repeat(3));
+
+    //模板字符串
+    var name = "王麻子";
+    var gender = "女";
+    var age = 18;
+
+    var content1 = "大家好, 我的名字是" + name + ", 今年" + age + "岁, 喜欢" + gender;
+    console.log(content1);
+
+    //模板字符串, 可以插入变量
+    var content2 = `大家好, 我的名字是${name}, 今年${age}岁, 喜欢${gender}`;
+    console.log(content2);
+
+    //模板字符串, 多行书写
+    var content3 = `名字: ${name}
+    年龄: ${age}
+    性别: ${gender}`;
+    console.log(content3);
+
+    //模板字符串, 写表达式
+    var x = 1, y = 3;
+    var content4 = `${x} + ${y} = ${x + y}`;
+    console.log(content4);
+
+    //模板字符串, 调用函数
+    function sayHi() {
+        return "Hi!";
+    }
+    var content5 = `第一个程序:${sayHi()}`;
+    console.log(content5);
+</script>
+
+<script type="text/babel">
+    console.log("----------华丽的分割线------------");
+    //数值
+    //常见的进制: 二进制, 八进制, 十进制, 十六进制
+    var n1 = 10;
+    console.log(n1);
+    //二进制
+    var n2 = 0b10;
+    console.log(n2);
+    var n3 = 0B1010;
+    console.log(n3);
+    //八进制
+    var n4 = 0o10;
+    console.log(n4);
+    var n5 = 0O10;
+    console.log(n5);
+    //十六进制
+    var n6 = 0xf0;
+    console.log(n6);
+    var n7 = 0X10;
+    console.log(n7);
+</script>
+
+<script type="text/babel">
+    //数组
+    var arr1 = new Array();//没有参数, 空数组
+    console.log(arr1);
+    var arr2 = new Array(3);//一个参数, 代表数组的长度
+    console.log(arr2);
+    var arr3 = new Array(3, 6);//大于2个参数, 代表数组的元素
+    console.log(arr3);
+
+    //Array.of(), 参数为元素
+    var arr4 = Array.of();
+    console.log(arr4);
+    var arr5 = Array.of(3);
+    console.log(arr5);
+    var arr6 = Array.of(3, 6);
+    console.log(arr6);
+</script>
+
+<script type="text/babel">
+    //有类的概念
+    //定义类
+    class Animal {
+        //构造函数
+        constructor() {
+            //属性
+            this.type = "动物";
+        }
+        //方法
+        say(content) {
+            console.log(this.type + "说:" + content);
+        }
+    }
+
+    //创建对象
+    let animal = new Animal();
+    animal.say('你好');
+
+
+    //使用extends子类继承父类
+    class Cat extends Animal{
+        constructor() {
+            //子类的构造函数内部必须写super()
+            super();
+            this.type = "猫咪";
+        }
+    }
+
+    let cat = new Cat();
+    cat.say("喵喵喵");
+
+</script>
+
+<script type="text/babel">
+    //函数的默认值
+    function test1(a, b) {
+        b = b || 20;
+        console.log(a, b);
+    }
+    test1(1);
+
+    function test2(a, b = 20) {
+        console.log(a, b);
+    }
+    test2(1);
+
+    //箭头函数
+    var test3 = function (i) {
+        return i + 1;
+    }
+    console.log(test3(2));
+
+    var test4 = (i) => i + 1;
+    console.log(test4(3));
+
+    var test5 = (i, j) => {
+        console.log(i + j + 1);
+    };
+    test5(5, 6);
+
+    //函数多余值的获取
+    function sum() {
+        var sum = 0;
+        for (var i = 0; i < arguments.length; i++) {
+            sum += arguments[i];
+        }
+        return sum;
+    }
+    console.log(sum(1, 2, 3, 4));
+
+    function sumPro(...values) {
+        let sum = 0;
+        for (let a of values) {
+            sum += a;
+        }
+        return sum;
+    }
+    console.log(sumPro(1, 2, 3, 4, 5));
+</script>
+</body>
+</html>

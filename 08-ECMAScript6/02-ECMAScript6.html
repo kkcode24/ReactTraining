@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ECMAScript6</title>
+</head>
+<body>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+    //var声明的变量, 具有函数作用域
+    var arr = [1, 2, 3];
+    for (var i = 0; i < arr.length; i++) {
+
+    }
+    console.log(arr[i]);
+
+    //let声明的变量, 具有块级作用域
+    for (let j = 0; j < 10; j++) {
+
+    }
+    //console.log(j);//error
+
+    //为了避免出现变量污染,解决方案: 立即执行匿名函数(IIFE, immediately-invoked function Expression)
+    var a = 100;
+    window.a = 100;
+    var a = 200;
+    window.a = 200;
+
+    (function () {
+        var a = 100;
+    }());
+    //而使用ES6中的let命令就可以很好的解决变量污染问题
+    {
+        let a = 100;
+    }
+
+    //let声明的变量, 在同一作用域下, 不允许重名
+    let a1 = 100;
+    let a1 = 102;//报错,Duplicate declaration "a1",意思是重复声明变量a1
+</script>
+</body>
+</html>

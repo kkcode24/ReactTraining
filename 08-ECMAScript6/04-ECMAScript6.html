@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ECMAScript6</title>
+</head>
+<body>
+<script src="../js/browser.min.js"></script>
+<script type="text/babel">
+	//let不像var那样会发生"变量提升"现象。
+	//所以变量要在声明后使用，否则会报错。
+
+	// var 的情况
+	console.log(f); // 输出undefined
+	var f = 2;
+
+	// let 的情况
+	console.log(kk); // 报错ReferenceError
+	let kk = 2;
+
+    //const声明一个常量
+    //常量用大写字母命名
+    const PI = 3.1415;
+    console.log(PI);
+
+    //常量不允许修改
+    //PI = 3.14;
+
+    //const声明的常量, 必须赋值
+    //const HEIGHT;
+
+    //const声明的常量, 具有块级作用域
+    if (true) {
+        const HEIGHT = 180;
+    }
+    //console.log(HEIGHT);//error
+</script>
+</body>
+</html>

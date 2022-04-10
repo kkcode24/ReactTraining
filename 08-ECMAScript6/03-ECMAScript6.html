@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>let不存在变量提升</title>
+</head>
+
+<body>
+    <script src="../js/browser.min.js"></script>
+    <script type="text/babel">
+        //let不像var那样会发生"变量提升"现象。 
+        //所以变量要在声明后使用，否则会报错。 
+        // var 的情况 
+        console.log(f);// 输出undefined 
+        var f = 2; 
+        // let 的情况 
+        console.log(kk); // 报错ReferenceError 
+        let kk = 2;
+    </script>
+</body>
+
+</html>

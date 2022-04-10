@@ -1,6 +1,7 @@
 # ReactTraining
 
 [React官网传送门](https://facebook.github.io/react/index.html "React官网")
+> 当前库React版本v15.3.2
 # 应用开发分类介绍
 >## 原生应用:
 >介绍：
@@ -99,20 +100,21 @@ ReactDOM.render(
 但是这样写起来太过麻烦，作为程序员则是能坐着不站着，能躺着不坐着。因此React推荐使用JSX语法
 >JSX: JavaScript extension, 带扩展的JavaScript, 并不是一门新语言, 它是一个语法糖
 >那么什么是语法糖呢？
->举个栗子：
-><pre><code>    //创建数组
-    var arr = new Array(1, 2, 3);
-    //通过语法糖, 创建数组
-    var arr1 = [1, 2, 3];
-    //创建对象
-    var obj = new Object();
-    obj.name = "张三";
-     //通过语法糖, 创建对象
-    var obj1 = {
-        name: "李四"
-    };
-</code></pre>
-往简单了说就是帮助我们坚持彻底的去执行懒规则
+>举个创建数组的栗子：
+
+```javascript
+var arr = new Array(1, 2, 3);
+//通过语法糖, 创建数组
+var arr1 = [1, 2, 3];
+//创建对象
+var obj = new Object();
+obj.name = "张三";
+ //通过语法糖, 创建对象
+var obj1 = {
+	name: "李四"
+};
+```
+
 ## 如何使用JSX
 >虽然JSX比起JavaScript写起来更简单，代码更直观，但是浏览器对JSX并不友好，那怎么办呢，React提供了一个中间人，就是Bable转换器。
 >
